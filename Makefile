@@ -48,7 +48,7 @@ $(BUILD_DIR)/%.c.o: %.c
 	@$(CC) -c  $(CFLAGS) $(INC_FLAGS) $< -o $@
 
 test:
-	@(CC) -o demo $(TEST_SRC)
+	@$(CC) $(TEST_SRC) -o simple
 
 clean:
 	@rm -rf $(BUILD_DIR)
@@ -59,7 +59,7 @@ fclean:
 	@rm -rf $(BUILD_DIR)
 	@rm -f $(NAME)
 	@$(MAKE) -C libs/libft fclean
-	@rm -f demo
+	@rm -f simple
 	@echo Fclean done
 
 re: fclean
