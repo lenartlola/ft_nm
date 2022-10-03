@@ -18,7 +18,7 @@ LIBS := -Llibs/libft -lft
 LIB := libs/libft/libft.a
 
 INC_FLAGS += $(addprefix -I,$(INC_DIRS))
-CFLAGS += -Wall -Wextra -Werror
+CFLAGS += -Wall -Wextra -Werror -g3
 CC ?= gcc
 LD ?= gcc
 
@@ -65,4 +65,18 @@ fclean:
 re: fclean
 	@$(MAKE) -j$(NPROC) $(NAME)
 
-.PHONY: all test clean fclean re
+docker:
+	docker build -t arch .
+	docker run -it --name archnm -v /Users/hsabir/Documents/ft_nm:/ft_nm arch
+
+docker_start:
+	docker start -i archnm
+
+docker_run:
+	docker exec -it archnm /bin/zsh
+
+
+prune:
+	docker system prune -a --volumes
+
+.PHONY: all test clean fclean re docker docker_run prune

@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.23)
+cmake_minimum_required(VERSION 3.22)
 project(ft_nm C)
 
 set(CMAKE_C_STANDARD 11)
@@ -8,6 +8,7 @@ include_directories(libs/libft/incs)
 include_directories(libs/libft/incs/libft)
 
 add_executable(ft_nm
+        incs/nm.h
         libs/libft/incs/libft/ft_chars.h
         libs/libft/incs/libft/ft_fds.h
         libs/libft/incs/libft/ft_lst.h

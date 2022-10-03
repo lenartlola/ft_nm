@@ -6,18 +6,19 @@
 #define FT_NM_NM_H
 
 #include "libft.h"
+#include "const_defines.h"
 
 #include <sys/mman.h>
 #include <fcntl.h>
+#include <sys/stat.h>
 
-#define ELF_LITTLE_MAGIC 0x464c457f
-#define ELF_BIG_MAGIC 0x7f454c47
 
 typedef struct s_data
 {
 	int			prog_fd;
 	struct stat	stat_buf;
-	char		*header;
+	const char	*mmap_ptr;
+	int			header_magic;
 }	t_data;
 
 /* Utils */
