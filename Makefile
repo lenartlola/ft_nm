@@ -75,7 +75,6 @@ docker_start:
 docker_run:
 	docker exec -it archnm /bin/zsh
 
-
 prune:
 	docker system prune -a --volumes
 

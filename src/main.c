@@ -4,17 +4,6 @@
 
 #include "nm.h"
 
-int	read_elf_hdr(t_data *data)
-{
-	ft_printf(0, "----ELF MAGIC----\n");
-	ft_printf(0, "1. 0x%x\n", data->mmap_ptr[EI_MAG0]);
-	ft_printf(0, "2. 0x%x\n", data->mmap_ptr[EI_MAG1]);
-	ft_printf(0, "3. 0x%x\n", data->mmap_ptr[EI_MAG2]);
-	ft_printf(0, "4. 0x%x\n", data->mmap_ptr[EI_MAG3]);
-
-	return 0;
-}
-
 int	main(int argc, char *argv[])
 {
 	t_data	data;
@@ -28,5 +17,11 @@ int	main(int argc, char *argv[])
 	if (init_data(argv[1], &data) == -1)
 		fatal("ft_nm: could not initialise data");
 	read_elf_hdr(&data);
+	//int munmap(void *addr, size_t length);
+	if (munmap(data.mmap_ptr, data.stat_buf.st_size) == -1)
+	{
+		ft_printf(0, "PANIC: failed to unmap pages of memory! %lx, %ld", data.mmap_ptr, data.stat_buf.st_size);
+		return 127;
+	}
 	return 0;
 }

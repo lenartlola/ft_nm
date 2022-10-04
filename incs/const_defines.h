@@ -16,7 +16,8 @@
 #define	EI_DATA		5
 #define	EI_VERSION	6
 #define	EI_OSABI	7
-#define	EI_PAD		8
+#define	EI_PAD		8E
+#define EI_ABIVERSION 8
 
 #define	ELFMAG0		0x7f		/* EI_MAG */
 #define	ELFMAG1		'E'
@@ -40,5 +41,8 @@
 
 #define ELFOSABI_NONE	0
 #define ELFOSABI_LINUX	3
+
+#define E_TYPE 		0x10
+#define E_MACHINE	0x12
 
 #endif //FT_NM_CONST_DEFINES_H

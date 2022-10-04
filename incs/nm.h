@@ -15,10 +15,8 @@
 
 typedef struct s_data
 {
-	int			prog_fd;
 	struct stat	stat_buf;
-	const char	*mmap_ptr;
-	int			header_magic;
+	char		*mmap_ptr;
 }	t_data;
 
 /* Utils */
@@ -26,5 +24,8 @@ void	fatal(char *arg);
 
 /* Init utils */
 int		init_data(char *file, t_data *data);
+
+/* Elf infos reader */
+int	read_elf_hdr(t_data *data);
 
 #endif //FT_NM_NM_H
