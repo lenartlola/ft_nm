@@ -31,6 +31,8 @@ else
 	NPROC := $(shell sysctl -n hw.ncpu)
 endif
 
+current_dir = $(shell pwd)
+
 all:
 	@$(MAKE) $(NAME)
 
@@ -67,7 +69,7 @@ re: fclean
 
 docker:
 	docker build -t arch .
-	docker run -it --name archnm -v /Users/hsabir/Documents/ft_nm:/ft_nm arch
+	docker run -it --name archnm -v $(current_dir):/ft_nm arch
 
 docker_start:
 	docker start -i archnm
