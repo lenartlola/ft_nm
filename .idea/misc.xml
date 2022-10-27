@@ -1,4 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CMakeWorkspace" PROJECT_DIR="$PROJECT_DIR$" />
+  <component name="UnattendedHostPersistenceState">
+    <option name="openedFilesInfos">
+      <list>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="167" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/incs/nm.h" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="56" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/src/main.c" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="4423" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/docs/elf.md" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="400" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/src/init_utils.c" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="1969" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/.gitignore" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="571" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/src/elf_head_infos_reader.c" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="1248" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/src/x86_arch.c" />
+        </OpenedFileInfo>
+      </list>
+    </option>
+  </component>
 </project>

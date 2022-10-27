@@ -17,9 +17,6 @@ int	init_data(char *file, t_data *data) {
 	close(fd);
 	hdr_magic = *(int *)(data->mmap_ptr);
 	if (hdr_magic == ELF_LITTLE_MAGIC || hdr_magic == ELF_BIG_MAGIC)
-	{
-		ft_printf(0, "ELF\n");
 		return 0;
-	}
 	return -1;
 }

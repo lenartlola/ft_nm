@@ -7,7 +7,7 @@
 
 static char	*get_target_arch(t_data *data)
 {
-	switch (data->mmap_ptr[EI_OSABI]) {
+	switch (data->x64_elf.elf64_header->e_ident[EI_OSABI]) {
 		case 0x00:
 			return "System V";
 		case 0x01:
@@ -50,7 +50,7 @@ static char	*get_target_arch(t_data *data)
 
 static char *get_e_type(t_data *data)
 {
-	switch (data->mmap_ptr[E_TYPE]) {
+	switch (data->x64_elf.elf64_header->e_ident[E_TYPE]) {
 		case 0x00:
 			return "NONE, Unknown.";
 		case 0x01:
@@ -67,7 +67,7 @@ static char *get_e_type(t_data *data)
 
 static char *get_machine_instr_arch(t_data *data)
 {
-	switch (data->mmap_ptr[E_MACHINE]) {
+	switch (data->x64_elf.elf64_header->e_ident[E_MACHINE]) {
 		case 0x00:
 			return "No specific instruction set";
 		case 0x01:
@@ -139,19 +139,19 @@ static char *get_machine_instr_arch(t_data *data)
 int	read_elf_hdr(t_data *data)
 {
 	ft_printf(0, "----ELF MAGIC----\n");
-	ft_printf(0, "1. 0x%x\n", data->mmap_ptr[EI_MAG0]);
-	ft_printf(0, "2. 0x%x\n", data->mmap_ptr[EI_MAG1]);
-	ft_printf(0, "3. 0x%x\n", data->mmap_ptr[EI_MAG2]);
-	ft_printf(0, "4. 0x%x\n", data->mmap_ptr[EI_MAG3]);
+	ft_printf(0, "[ 0x%x, ", data->x64_elf.elf64_header->e_ident[EI_MAG0]);
+	ft_printf(0, "0x%x, ", data->x64_elf.elf64_header->e_ident[EI_MAG1]);
+	ft_printf(0, "0x%x, ", data->x64_elf.elf64_header->e_ident[EI_MAG2]);
+	ft_printf(0, "0x%x ]\n", data->x64_elf.elf64_header->e_ident[EI_MAG3]);
 	ft_printf(0, "----Arch----\n");
-	if (data->mmap_ptr[EI_CLASS] == 1)
+	if (data->x64_elf.elf64_header->e_ident[EI_CLASS] == 1)
 		ft_printf(0, "- 32-bit\n");
 	else
 		ft_printf(0, "- 64-bit\n");
 	ft_printf(0, "----Target Arch----\n");
 	ft_printf(0, "- %s\n", get_target_arch(data));
 	ft_printf(0, "----Endian----\n");
-	if (data->mmap_ptr[EI_DATA] == ELFCLASS32)
+	if (data->x64_elf.elf64_header->e_ident[EI_DATA] == ELFCLASS32)
 		ft_printf(0, "- little\n");
 	else
 		ft_printf(0, "- big\n");
