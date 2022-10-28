@@ -38,7 +38,7 @@ all:
 
 $(NAME): $(LIB) $(OBJS)
 	@echo Linking $@
-	@$(CC) $(CFLAGS) $(INC_FLAGS) $(OBJS) $(LIBS) -o $(NAME)
+	@$(CC) $(CFLAGS) $(INC_FLAGS) -fsanitize=address $(OBJS) $(LIBS) -o $(NAME)
 
 $(LIB):
 	@$(MAKE) -C libs/libft
@@ -49,8 +49,11 @@ $(BUILD_DIR)/%.c.o: %.c
 	@mkdir -p $(dir $@)
 	@$(CC) -c  $(CFLAGS) $(INC_FLAGS) $< -o $@
 
-test:
+test64:
 	@$(CC) $(TEST_SRC) -o simple
+
+test32:
+	@$(CC) $(TEST_SRC) -m32 -o simple
 
 clean:
 	@rm -rf $(BUILD_DIR)

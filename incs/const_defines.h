@@ -8,14 +8,14 @@
 #define ELF_LITTLE_MAGIC 0x464c457f
 #define ELF_BIG_MAGIC 0x7f454c47
 
-#define	EI_MAG0		0		/* e_ident[] indexes */
-#define	EI_MAG1		1
-#define	EI_MAG2		2
-#define	EI_MAG3		3
-#define	EI_CLASS	4
-#define	EI_DATA		5
+//#define	EI_MAG0		0		/* e_ident[] indexes */
+//#define	EI_MAG1		1
+//#define	EI_MAG2		2
+//#define	EI_MAG3		3
+#define	ENDIAN	4
+//#define	EI_DATA		5
 #define	EI_VERSION	6
-#define	EI_OSABI	7
+//#define	EI_OSABI	7
 #define	EI_PAD		8E
 #define EI_ABIVERSION 8
 
@@ -27,7 +27,7 @@
 #define	SELFMAG		4
 
 #define	ELFCLASSNONE	0		/* EI_CLASS */
-#define	ELFCLASS32	1
+//#define	ELFCLASS32	1
 #define	ELFCLASS64	2
 #define	ELFCLASSNUM	3
 

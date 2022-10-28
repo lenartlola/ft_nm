@@ -73,4 +73,4 @@ add_executable(ft_nm
         src/init_utils.c
         src/utils.c
         src/elf_head_infos_reader.c
-        src/main.c src/x86_arch.c)
+        src/main.c src/x64_arch.c src/ft_nm.c src/x86_arch.c libs/libft/srcs/ft_lst/ft_freelst.c src/generic_utils.c)

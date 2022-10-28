@@ -17,7 +17,8 @@ int	main(int argc, char *argv[])
 	if (init_data(argv[1], &data) == -1)
 		fatal("ft_nm: could not initialise data");
 	//read_elf_hdr(&data);
-	init_x64_data(&data);
+	ft_nm(&data);
+//	init_x64_data(&data);
 	if (munmap(data.mmap_ptr, data.stat_buf.st_size) == -1)
 	{
 		ft_printf(0, "PANIC: failed to unmap pages of memory! %lx, %ld", data.mmap_ptr, data.stat_buf.st_size);
