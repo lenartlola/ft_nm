@@ -6,7 +6,7 @@
 
 void	ft_nm(t_data *data)
 {
-	if (data->mmap_ptr[ENDIAN] == 1)
+	if (data->mmap_ptr[X86_ARCH] == 1)
 		init_x86_data(data);
 	else
 		init_x64_data(data);

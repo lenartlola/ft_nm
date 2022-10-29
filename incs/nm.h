@@ -13,18 +13,31 @@
 #include <sys/stat.h>
 #include <elf.h>
 
+typedef struct s_symbol_lst	t_symbol_lst;
+
+struct s_symbol_lst
+{
+	void			*content;
+	char			type;
+	uint64_t 		value;
+	t_symbol_lst	*next;
+};
+
+
 typedef struct	s_x64_elf
 {
-	Elf64_Ehdr	*elf64_header; // Elf header structure for 64-bit
-	Elf64_Shdr	*elf64_shdr; // Section header for 64-bit
-	Elf64_Sym	*elf64_sym;
-	t_list		*sym_lst;
-} t_x64_elf;
+	Elf64_Ehdr		*elf64_header; // Elf header structure for 64-bit
+	Elf64_Shdr		*elf64_shdr; // Section header for 64-bit
+	Elf64_Sym		*elf6_sym; // Symbol table section
+	t_symbol_lst	*sym_lst; // A linked list to store information
+}	t_x64_elf;
 
 typedef struct	s_x86_elf
 {
-	Elf32_Ehdr	*elf32_header; // Elf header structure for 32-bit
-	Elf32_Shdr	*elf32_shdr; // Section header for 32-bit
+	Elf32_Ehdr		*elf32_header; // Elf header structure for 32-bit
+	Elf32_Shdr		*elf32_shdr; // Section header for 32-bit
+	Elf32_Sym		*elf32_sym; // Symbol table section
+	t_symbol_lst	*sym_lst; // A linked list to store information
 }	t_x86_elf;
 
 typedef struct s_data
@@ -36,24 +49,32 @@ typedef struct s_data
 }	t_data;
 
 /* ft_nm */
-void	ft_nm(t_data *data);
+void			ft_nm(t_data *data);
 
 /* Utils */
-void	fatal(char *arg);
+void			fatal(char *arg);
 
 /* Init utils */
-int		init_data(char *file, t_data *data);
+int				init_data(char *file, t_data *data);
 
 /* Elf infos reader */
 int	read_elf_hdr(t_data *data);
 
 /* x64 arch */
-void	init_x64_data(t_data *data);
+void			init_x64_data(t_data *data);
+char			get_x64_symbol_type(Elf64_Sym* symbol_entry, Elf64_Shdr* current_entry);
 
-/* x64 arch */
-void	init_x86_data(t_data *data);
+
+/* x86 arch */
+void			init_x86_data(t_data *data);
+char			get_x86_symbol_type(Elf32_Sym* symbol_entry, Elf32_Shdr* current_entry);
+
 
 /* Generic utils */
-void	print_lst(t_list *list);
+void			print_lst(t_symbol_lst *list);
+t_symbol_lst	*add_symbol(void *content, uint64_t value, char t);
+void			free_lst(t_symbol_lst **lst);
+void			add_symbol_back(t_symbol_lst **alst, t_symbol_lst *new);
+
 
 #endif //FT_NM_NM_H
