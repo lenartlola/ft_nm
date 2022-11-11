@@ -45,6 +45,6 @@ void	init_x86_data(t_data *data)
 			add_shdr_to_lst(data->x86_elf.elf32_shdr, &data->x86_elf.elf32_shdr[i], string_shdr_table, data);
 		}
 	}
-	print_lst(data->x86_elf.sym_lst);
+	print_lst(data->x86_elf.sym_lst, data);
 	free_lst(&(data->x86_elf.sym_lst));
 }

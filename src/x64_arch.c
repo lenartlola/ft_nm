@@ -50,6 +50,6 @@ void	init_x64_data(t_data *data)
 			add_shdr_to_lst(data->x64_elf.elf64_shdr, &data->x64_elf.elf64_shdr[i], string_shdr_table, data);
 		}
 	}
-	print_lst(data->x64_elf.sym_lst);
+	print_lst(data->x64_elf.sym_lst, data);
 	free_lst( &(data->x64_elf.sym_lst));
 }

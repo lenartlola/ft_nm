@@ -4,18 +4,63 @@
 
 #include "nm.h"
 
-void	print_lst(t_symbol_lst *list)
+int filter_opts(t_symbol_lst *lst, t_data *data) {
+	if (lst->type == 'A' && data->opts.a == false)
+		return -1;
+	return 0;
+}
+
+void	print_undef_only(t_symbol_lst *lst) {
+	while (lst) {
+		if (lst->type == 'U') {
+			if (lst->value)
+				ft_printf(1, "%016x %c %s\n", lst->value, lst->type, lst->content);
+			else
+				ft_printf(1, "%16c %c %s\n", ' ', lst->type, lst->content);
+		}
+		lst = lst->next;
+	}
+}
+
+void	print_extern_only(t_symbol_lst *lst) {
+	while (lst) {
+		if (lst->type == 'U' || lst->type == 'w' || lst->type == 'D'
+			|| lst->type == 'B' || lst->type == 'T' || lst->type == 'W') {
+			if (lst->value)
+				ft_printf(1, "%016x %c %s\n", lst->value, lst->type, lst->content);
+			else
+				ft_printf(1, "%16c %c %s\n", ' ', lst->type, lst->content);
+		}
+		lst = lst->next;
+	}
+}
+
+void	print_lst(t_symbol_lst *list, t_data *data)
 {
 	t_symbol_lst *tmp;
 
 	tmp = list;
 	while (tmp)
 	{
-		if ( !ft_strncmp((char*)tmp->content, "", ft_strlen((char*)tmp->content)))
+		if (data->opts.u == true) {
+			print_undef_only(tmp);
+			break;
+		}
+		if (data->opts.g == true) {
+			print_extern_only(tmp);
+			break;
+		}
+		if (filter_opts(tmp, data) < 0)
 		{
 			tmp = tmp->next;
 			continue;
 		}
+
+//		if (!ft_strncmp((char*)tmp->content, "", ft_strlen((char*)tmp->content)))
+//		{
+//			tmp = tmp->next;
+//			continue;
+//		}
 		if (tmp->value)
 			ft_printf(1, "%016x %c %s\n", tmp->value, tmp->type, tmp->content);
 		else

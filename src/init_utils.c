@@ -11,12 +11,14 @@ static void	set_strct_to_zero(t_data *data)
 	memset(&data->x86_elf, 0, sizeof(data->x86_elf));
 }
 
-int	init_data(char *file, t_data *data) {
+int	init_data(t_data *data) {
 	int fd;
 	int	hdr_magic;
 
-	if ((fd = open(file, O_RDONLY)) == -1)
-		return -1;
+	if ((fd = open(data->prog, O_RDONLY)) == -1) {
+		ft_printf(1, "ft_nm: '%s': No such file\n", data->prog);
+		exit(1);
+	}
 	set_strct_to_zero(data);
 	if (fstat(fd, &data->stat_buf) == -1) {
 		return -1;
