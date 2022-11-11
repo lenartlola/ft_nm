@@ -24,6 +24,11 @@ void	print_undef_only(t_symbol_lst *lst) {
 
 void	print_extern_only(t_symbol_lst *lst) {
 	while (lst) {
+		if (!ft_strncmp((char*)lst->content, "", ft_strlen((char*)lst->content)))
+		{
+			lst = lst->next;
+			continue;
+		}
 		if (lst->type == 'U' || lst->type == 'w' || lst->type == 'D'
 			|| lst->type == 'B' || lst->type == 'T' || lst->type == 'W') {
 			if (lst->value)
@@ -38,6 +43,7 @@ void	print_extern_only(t_symbol_lst *lst) {
 void	print_lst(t_symbol_lst *list, t_data *data)
 {
 	t_symbol_lst *tmp;
+	(void)data;
 
 	tmp = list;
 	while (tmp)
@@ -50,17 +56,16 @@ void	print_lst(t_symbol_lst *list, t_data *data)
 			print_extern_only(tmp);
 			break;
 		}
-		if (filter_opts(tmp, data) < 0)
+		if (tmp->type == 'a' && data->opts.a == false)
 		{
 			tmp = tmp->next;
 			continue;
 		}
-
-//		if (!ft_strncmp((char*)tmp->content, "", ft_strlen((char*)tmp->content)))
-//		{
-//			tmp = tmp->next;
-//			continue;
-//		}
+		if (!ft_strncmp((char*)tmp->content, "", ft_strlen((char*)tmp->content)))
+		{
+			tmp = tmp->next;
+			continue;
+		}
 		if (tmp->value)
 			ft_printf(1, "%016x %c %s\n", tmp->value, tmp->type, tmp->content);
 		else

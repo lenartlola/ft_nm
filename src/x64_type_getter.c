@@ -33,9 +33,12 @@ static char	get_x64_type(Elf64_Shdr* s)
 			if (s->sh_flags & SHF_ALLOC) {
 				if (s->sh_flags & SHF_EXECINSTR)
 					return 'T';
-				if (s->sh_flags & SHF_WRITE)
+				if (s->sh_flags & SHF_WRITE) {
 					return 'd';
-				return 'R';
+				}
+				if (s->sh_flags == 18)
+					return 'R';
+				return 'r';
 			}
 			break;
 		case SHT_DYNAMIC:
@@ -44,8 +47,8 @@ static char	get_x64_type(Elf64_Shdr* s)
 		case SHT_FINI_ARRAY:
 			return 'd';
 			break;
-		case SHT_NOTE:
-			return 'r';
+//		case SHT_NOTE:
+//			return 'r';
 	}
 	return '?';
 }

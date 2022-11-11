@@ -5,36 +5,32 @@
     <option name="openedFilesInfos">
       <list>
         <OpenedFileInfo>
-          <option name="caretOffset" value="151" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/src/ft_nm.c" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
-          <option name="caretOffset" value="833" />
+          <option name="caretOffset" value="135" />
           <option name="fileUrl" value="file://$PROJECT_DIR$/src/main.c" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
-          <option name="caretOffset" value="1678" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/incs/nm.h" />
         </OpenedFileInfo>
         <OpenedFileInfo>
           <option name="caretOffset" value="1155" />
           <option name="fileUrl" value="file://$PROJECT_DIR$/libs/libft/incs/libft/ft_printf.h" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="1908" />
+          <option name="caretOffset" value="505" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/gf" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="621" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/src/x64_type_getter.c" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="459" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/incs/nm.h" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="872" />
           <option name="fileUrl" value="file://$PROJECT_DIR$/src/x64_arch.c" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="998" />
+          <option name="caretOffset" value="1715" />
           <option name="fileUrl" value="file://$PROJECT_DIR$/src/list_utils.c" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
-          <option name="caretOffset" value="196" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/src/x86_arch.c" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
-          <option name="caretOffset" value="656" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/src/x64_type_getter.c" />
         </OpenedFileInfo>
       </list>
     </option>
