@@ -13,10 +13,6 @@
           <option name="fileUrl" value="file://$PROJECT_DIR$/libs/libft/incs/libft/ft_printf.h" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="505" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/gf" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
           <option name="caretOffset" value="621" />
           <option name="fileUrl" value="file://$PROJECT_DIR$/src/x64_type_getter.c" />
         </OpenedFileInfo>
@@ -29,7 +25,15 @@
           <option name="fileUrl" value="file://$PROJECT_DIR$/src/x64_arch.c" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="1715" />
+          <option name="caretOffset" value="213" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/src/x86_type_getter.c" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="151" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/src/ft_nm.c" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="1740" />
           <option name="fileUrl" value="file://$PROJECT_DIR$/src/list_utils.c" />
         </OpenedFileInfo>
       </list>

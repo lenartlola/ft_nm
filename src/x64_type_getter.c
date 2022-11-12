@@ -47,8 +47,8 @@ static char	get_x64_type(Elf64_Shdr* s)
 		case SHT_FINI_ARRAY:
 			return 'd';
 			break;
-//		case SHT_NOTE:
-//			return 'r';
+		case SHT_NOTE:
+			return 'r';
 	}
 	return '?';
 }

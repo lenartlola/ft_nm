@@ -29,7 +29,8 @@ int parse_args(char **args, t_data *data) {
 }
 
 void usage() {
-	// TODO
+	ft_printf(1, "Usage: ./ft_nm [OPIONS] <program>\n");
+	ft_printf(1, "Options:\n%6c -a\n%6c -g\n", ' ', ' ');
 	exit(1);
 }
 

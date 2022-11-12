@@ -4,12 +4,6 @@
 
 #include "nm.h"
 
-int filter_opts(t_symbol_lst *lst, t_data *data) {
-	if (lst->type == 'A' && data->opts.a == false)
-		return -1;
-	return 0;
-}
-
 void	print_undef_only(t_symbol_lst *lst) {
 	while (lst) {
 		if (lst->type == 'U') {
@@ -43,7 +37,6 @@ void	print_extern_only(t_symbol_lst *lst) {
 void	print_lst(t_symbol_lst *list, t_data *data)
 {
 	t_symbol_lst *tmp;
-	(void)data;
 
 	tmp = list;
 	while (tmp)
@@ -61,15 +54,22 @@ void	print_lst(t_symbol_lst *list, t_data *data)
 			tmp = tmp->next;
 			continue;
 		}
-		if (!ft_strncmp((char*)tmp->content, "", ft_strlen((char*)tmp->content)))
+		if (!ft_strncmp((char*)tmp->content, "", ft_strlen((char*)tmp->content)) && (data->opts.a == false || tmp->type == 'U'))
 		{
 			tmp = tmp->next;
 			continue;
 		}
-		if (tmp->value)
-			ft_printf(1, "%016x %c %s\n", tmp->value, tmp->type, tmp->content);
-		else
-			ft_printf(1, "%16c %c %s\n", ' ', tmp->type, tmp->content);
+		if (data->mmap_ptr[X86_ARCH] == 1) {
+			if (tmp->value)
+				ft_printf(1, "%08x %c %s\n", tmp->value, tmp->type, tmp->content);
+			else
+				ft_printf(1, "%8c %c %s\n", ' ', tmp->type, tmp->content);
+		} else {
+			if (tmp->value)
+				ft_printf(1, "%016x %c %s\n", tmp->value, tmp->type, tmp->content);
+			else
+				ft_printf(1, "%16c %c %s\n", ' ', tmp->type, tmp->content);
+		}
 		tmp = tmp->next;
 	}
 }

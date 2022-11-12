@@ -11,7 +11,7 @@ static char	check_shdr_index(int32_t c)
 			return'U';
 			break;
 		case SHN_ABS:
-			return 'A';
+			return 'a';
 			break;
 		case SHN_COMMON:
 			return 'c';
@@ -25,17 +25,19 @@ static char	get_x86_type(Elf32_Shdr* s)
 	switch (s->sh_type) {
 		case SHT_NOBITS:
 			if (s->sh_flags & SHF_ALLOC && s->sh_flags & SHF_WRITE)
-				return 'b';
+				return 'B';
 			if (s->sh_flags & SHT_DYNSYM)
 				return 'd';
 			break;
 		case SHT_PROGBITS:
 			if (s->sh_flags & SHF_ALLOC) {
 				if (s->sh_flags & SHF_EXECINSTR)
-					return 't';
+					return 'T';
 				if (s->sh_flags & SHF_WRITE)
 					return 'd';
-				return 'R';
+				if (s->sh_flags == 18)
+					return 'R';
+				return 'r';
 			}
 			break;
 		case SHT_DYNAMIC:
