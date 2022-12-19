@@ -86,6 +86,7 @@ void			print_lst(t_symbol_lst *list, t_data *data);
 t_symbol_lst	*add_symbol(void *content, uint64_t value, char t);
 void			free_lst(t_symbol_lst **lst);
 void			add_symbol_back(t_symbol_lst **alst, t_symbol_lst *new);
+void 			sort_list(t_symbol_lst **head);
 
 
 #endif //FT_NM_NM_H

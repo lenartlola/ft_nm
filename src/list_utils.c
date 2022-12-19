@@ -128,3 +128,31 @@ void	add_symbol_back(t_symbol_lst **alst, t_symbol_lst *new)
 			*alst = new;
 	}
 }
+
+
+/*
+1. Take a pointer to the head of the linked list as an argument
+2. Iterate through the list and compare each char * element to the next one
+3. If the current char * is greater than the next one, swap the char * elements
+4. Repeat step 3 until the linked list is sorted
+*/
+
+void sort_list(t_symbol_lst **head)
+{
+    t_symbol_lst *start = *head;
+    t_symbol_lst *i, *j;
+    char *tmp;
+
+    for (i = start; i->next != NULL; i=i->next)
+    {
+        for (j = i->next; j != NULL; j = j->next)
+        {
+            if (strcmp(i->content, j->content) > 0)
+            {
+                tmp = i->content;
+                i->content = j->content;
+                j->content = tmp;
+            }
+        }
+    }
+}
