@@ -70,8 +70,17 @@ add_executable(ft_nm
         libs/libft/srcs/ft_strs/ft_strrchr.c
         libs/libft/srcs/ft_strs/ft_strtrim.c
         libs/libft/srcs/ft_strs/ft_substr.c
-        src/init_utils.c
-        src/utils.c
-        src/elf_head_infos_reader.c
-        src/main.c src/x64_arch.c src/ft_nm.c src/x86_arch.c src/generic_utils.c src/list_utils.c src/x86_type_getter.c src/x64_type_getter.c)
+#        src/init_utils.c
+#        src/utils.c
+#        src/elf_head_infos_reader.c
+        src/main.c
+#        src/x64_arch.c
+#        src/ft_nm.c
+#        src/x86_arch.c
+#        src/generic_utils.c
+#        src/list_utils.c
+#        src/x86_type_getter.c
+#        src/x64_type_getter.c
+#        test/main.c
+        )
 

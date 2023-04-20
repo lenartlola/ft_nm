@@ -53,7 +53,7 @@ typedef struct s_data
 {
 	struct stat	stat_buf;
 	char			*mmap_ptr;
-	char			*prog;
+	t_list 			*prog;
 	t_x64_elf		x64_elf;
 	t_x86_elf		x86_elf;
 	t_arg_options	opts;

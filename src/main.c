@@ -4,7 +4,19 @@
 
 #include "nm.h"
 
-int parse_args(char **args, t_data *data) {
+void    free_list(t_list *lst)
+{
+    t_list *tmp = NULL;
+    while (lst)
+    {
+        tmp = lst;
+        free(tmp);
+        lst = lst->next;
+    }
+}
+
+int parse_args(char **args, t_data *data)
+{
 	for (int i = 1; args[i]; ++i) {
 		if (args[i][0] == '-') {
 			for (int j = 1; args[i][j]; ++j) {
@@ -22,13 +34,14 @@ int parse_args(char **args, t_data *data) {
 					return -1;
 			}
 		} else {
-			data->prog = args[i];
-		}
+            ft_lstadd_back(&data->prog, ft_lstnew(args[i]));
+        }
 	}
 	return 0;
 }
 
-void usage() {
+void usage()
+{
 	ft_printf(1, "Usage: ./ft_nm [OPIONS] <program>\n");
 	ft_printf(1, "Options:\n%6c -a\n%6c -g\n", ' ', ' ');
 	exit(1);
@@ -37,12 +50,13 @@ void usage() {
 int	main(int argc, char *argv[])
 {
 	t_data	data;
+    data.prog = NULL;
 
 	(void )argc;
 	if (parse_args(argv, &data) < 0)
 		usage();
 	if (!data.prog)
-		data.prog = "a.out";
+        ft_lstadd_back(&data.prog, ft_lstnew("a.out"));
 	if (init_data( &data) == -1)
 		fatal("ft_nm: could not initialise data");
 	ft_nm(&data);
