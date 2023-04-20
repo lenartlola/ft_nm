@@ -6,8 +6,15 @@
 
 void	ft_nm(t_data *data)
 {
-	if (data->mmap_ptr[X86_ARCH] == 1)
-		init_x86_data(data);
-	else
-		init_x64_data(data);
+	t_prog_list	*tmp;
+
+	tmp = data->p_lst;
+	while (tmp)
+	{
+		if (data->p_lst->m_ptr[X86_ARCH] == 1)
+			init_x86_data(data, tmp);
+		else
+			init_x64_data(data, tmp);
+		tmp = tmp->next;
+	}
 }

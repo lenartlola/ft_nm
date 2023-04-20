@@ -4,7 +4,8 @@
 
 #include "nm.h"
 
-void	print_undef_only(t_symbol_lst *lst) {
+void	print_undef_only(t_symbol_lst *lst)
+{
 	while (lst) {
 		if (lst->type == 'U') {
 			if (lst->value)
@@ -16,10 +17,10 @@ void	print_undef_only(t_symbol_lst *lst) {
 	}
 }
 
-void	print_extern_only(t_symbol_lst *lst) {
+void	print_extern_only(t_symbol_lst *lst)
+{
 	while (lst) {
-		if (!ft_strncmp((char*)lst->content, "", ft_strlen((char*)lst->content)))
-		{
+		if (!ft_strncmp((char*)lst->content, "", ft_strlen((char*)lst->content))) {
 			lst = lst->next;
 			continue;
 		}
@@ -129,6 +130,55 @@ void	add_symbol_back(t_symbol_lst **alst, t_symbol_lst *new)
 	}
 }
 
+t_prog_list	*last_prog(t_prog_list *lst)
+{
+    while (lst)
+    {
+        if (!lst->next)
+            return (lst);
+        lst = lst->next;
+    }
+    return (lst);
+}
+
+
+void	add_p_lst_back(t_prog_list **alst, t_prog_list *new)
+{
+    t_prog_list *last;
+
+    if (alst)
+    {
+        if (*alst)
+        {
+            last = last_prog(*alst);
+            last->next = new;
+        }
+        else
+            *alst = new;
+    }
+}
+
+static void	set_strct_to_zero(t_prog_list *prog)
+{
+//	memset(prog, 0, sizeof(&prog));
+	memset(&prog->x64_elf, 0, sizeof(prog->x64_elf));
+	memset(&prog->x86_elf, 0, sizeof(prog->x86_elf));
+}
+
+t_prog_list	*add_prog(void *content, char *ptr, struct stat sb)
+{
+    t_prog_list	*r;
+
+    r = (t_prog_list *)malloc(sizeof(t_prog_list));
+    if (!r)
+        return (NULL);
+    r->content = content;
+    r->m_ptr = ptr;
+	r->stat_buf = sb;
+    r->next = (t_prog_list *)0;
+	set_strct_to_zero(r);
+    return (r);
+}
 
 /*
 1. Take a pointer to the head of the linked list as an argument

@@ -34,9 +34,11 @@ int parse_args(char **args, t_data *data)
 					return -1;
 			}
 		} else {
-            ft_lstadd_back(&data->prog, ft_lstnew(args[i]));
+            map_data(data, args[i]);
         }
 	}
+	if (!data->p_lst)
+		map_data(data, "a.out");
 	return 0;
 }
 
@@ -50,20 +52,19 @@ void usage()
 int	main(int argc, char *argv[])
 {
 	t_data	data;
-    data.prog = NULL;
+//    data.prog = NULL;
 
 	(void )argc;
 	if (parse_args(argv, &data) < 0)
 		usage();
-	if (!data.prog)
-        ft_lstadd_back(&data.prog, ft_lstnew("a.out"));
-	if (init_data( &data) == -1)
-		fatal("ft_nm: could not initialise data");
 	ft_nm(&data);
-	if (munmap(data.mmap_ptr, data.stat_buf.st_size) == -1)
-	{
-		ft_printf(0, "PANIC: failed to unmap pages of memory! %lx, %ld", data.mmap_ptr, data.stat_buf.st_size);
-		exit(127);
-	}
+//	if (init_data(&data) == -1)
+//		fatal("ft_nm: could not initialise data");
+//	ft_nm(&data);
+//	if (munmap(data.mmap_ptr, data.stat_buf.st_size) == -1)
+//	{
+//		ft_printf(0, "PANIC: failed to unmap pages of memory! %lx, %ld", data.mmap_ptr, data.stat_buf.st_size);
+//		exit(127);
+//	}
 	return 0;
 }
